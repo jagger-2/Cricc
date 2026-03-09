@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGMA - Formation en Docimologie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        /* Header avec logo */
+        .article-header {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d6a4f 100%);
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .article-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(218,165,32,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .logo-container {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .club-name {
+            color: #DAA520;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .article-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .article-subtitle {
+            color: #DAA520;
+            font-size: 18px;
+            font-weight: 400;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Métadonnées */
+        .article-meta {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #DAA520;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a4d2e;
+            font-size: 14px;
+        }
+        
+        .meta-icon {
+            width: 20px;
+            height: 20px;
+            background: #1a4d2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        /* Contenu */
+        .article-content {
+            padding: 50px 60px;
+        }
+        
+        .lead-paragraph {
+            font-size: 20px;
+            font-weight: 400;
+            color: #2d6a4f;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid #DAA520;
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
+        }
+        
+        h2 {
+            color: #1a4d2e;
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #DAA520 0%, transparent 100%);
+        }
+        
+        p {
+            color: #444;
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Citations */
+        .quote {
+            background: linear-gradient(135deg, #f0f7f4 0%, #e8f5e9 100%);
+            border-left: 5px solid #2d6a4f;
+            padding: 25px 30px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 60px;
+            color: #DAA520;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        
+        .quote-text {
+            font-style: italic;
+            color: #1a4d2e;
+            font-size: 17px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            color: #2d6a4f;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d6a4f 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(26,77,46,0.3);
+        }
+        
+        .highlight-box h3 {
+            color: #DAA520;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box p {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .highlight-box li {
+            color: white;
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .highlight-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #DAA520;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* Call to action */
+        .cta-section {
+            background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            color: white;
+        }
+        
+        .cta-section h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .cta-section p {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1a4d2e;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        /* Footer */
+        .article-footer {
+            background: #f8f9fa;
+            padding: 40px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            color: #1a4d2e;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #666;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a:hover {
+            color: #1a4d2e;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #1a4d2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: #DAA520;
+            transform: translateY(-3px);
+        }
+        
+        .hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .hashtag {
+            background: #e8f5e9;
+            color: #1a4d2e;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .signature {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .signature strong {
+            color: #1a4d2e;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-content {
+                padding: 30px 25px;
+            }
+            
+            .article-title {
+                font-size: 24px;
+            }
+            
+            .lead-paragraph {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 22px;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .article-container {
+                box-shadow: none;
+            }
+            
+            .cta-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="article-container">
+        <!-- Header -->
+        <div class="article-header">
+            <div>
+                <img src="IMG-20251202-WA0029.png" alt="SIGMA Logo">
+            </div>
+            <div class="club-name">Club SIGMA - École Normale Supérieure</div>
+            <h1 class="article-title">SIGMA Lance son Département de Formation : ”Quand les Étudiants Prennent en Main la Qualité de l'Éducation”</h1>
+            <p class="article-subtitle">Une première session en docimologie marque le début d'une révolution éducative portée par la jeunesse</p>
+        </div>
+        
+        <!-- Métadonnées -->
+        <div class="article-meta">
+            <div class="meta-item">
+                <span class="meta-icon">📅</span>
+                <span>Port-au-Prince, 8 mars 2026</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-icon">⏱</span>
+                <span>Lecture : 3 min</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-icon">✍️</span>
+                <span>Département Communication SIGMA</span>
+            </div>
+        </div>
+        
+        <!-- Contenu -->
+        <div class="article-content">
+            <p class="lead-paragraph">
+                    Le Club Scientifique et Technologique SIGMA de l'École Normale Supérieure vient de franchir une nouvelle étape, le tout premier pas de son Département de Formation avec une première session sur la docimologie, ce dimanche.
+            </p>
+            
+            <h2>Une Initiative qui répond à un besoin criant</h2>
+            <p>
+                L'éducation haïtienne fait face à des défis majeurs notemment l’évaluation subjective des élèves, formation insuffisante des enseignants, absence de mécanismes de formation continue, décalage entre théorie et pratique. Face à cette réalité, SIGMA ne se contente pas de constater le club agit.
+            </p>
+            
+            <div class="quote">
+                <p class="quote-text">
+                    Le Département de Formation n'est pas un projet parmi d'autres, c'est une réponse concrète à l'urgence éducative du pays. Nous voulons donner aux jeunes Haïtiens des compétences complémentaires, voire supplémentaires, qui feront la différence dans leurs études et leur carrière.
+                </p>
+                <p class="quote-author">— Kiveline Étienne, Chef du Département Formation, SIGMA</p>
+            </div>
+            
+            <h2>Une Première Formation qui Donne le Ton</h2>
+            <p>
+                Ce dimanche 8 mars, plus d'une dizaine de participants, étudiants de l'ENS et d'autres institutions se sont réunis pour 150 minutes de formation intensive en docimologie, l'art et la science de l'évaluation juste. Au programme il y avait des études de cas, des analyses pratiques, et une déconstruction des biais qui minent la qualité des évaluations scolaires.
+            </p>
+            <p>
+                Le formateur, <strong>Basquin Wildy</strong>, éducateur et mathématicien normalien supérieur, a su bien assuré en combinant rigueur scientifique et methodes d’application immédiate. Car c'est bien là l'approche de SIGMA : former utile, former concret, former pour transformer.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>Pourquoi la Docimologie ?</h3>
+                <p>L'évaluation juste n'est pas qu'une question technique, c'est un enjeu d'équité :</p>
+                <ul>
+                    <li>Une évaluation injuste peut briser une trajectoire scolaire</li>
+                    <li>Les biais inconscients reproduisent des inégalités systémiques</li>
+                    <li>Dans un système fragile, chaque note compte double</li>
+                    <li>Former à l'évaluation, c'est toucher à la racine du problème</li>
+                </ul>
+            </div>
+            
+            <h2>Un Département, Une Vision, Un Mouvement</h2>
+            <p>
+                Créé en décembre 2025, le Département Formation de SIGMA ne compte pas s'arrêter là. Dès ce samedi 14 mars, une série de formations sur <strong>LaTeX</strong> l'outil de rédaction scientifique de référence débutera. D'autres thématiques suivront : pédagogie active, technologies éducatives, informatiquede base etc...
+            </p>
+            <p>
+                L'objectif est de créer un écosystème de formation continue, accessible, et porté par des jeunes pour des jeunes. Combler les vides laissés par un système institutionnel dépassé. Prouver qu'on n'a pas besoin d'attendre les grandes politiques publiques pour agir à son échelle.
+            </p>
+            
+            <h2>Pourquoi C'est Important</h2>
+            <p>
+                Dans un pays où 60% des enseignants n'ont pas reçu de formation pédagogique formelle, où les ressources de formation continue sont quasi-inexistantes, et où l'innovation pédagogique peine à émerger, des initiatives comme celle de SIGMA sont des lueurs d'espoir.
+            </p>
+            <p>
+                Elles montrent qu'une autre éducation est possible. Qu'elle peut naître d'étudiants engagés, de clubs dynamiques, de passionnés qui refusent la fatalité. Qu'on peut, avec peu de moyens mais beaucoup de volonté, changer les choses une formation à la fois.
+            </p>
+            
+            <div class="cta-section">
+                <h3>Et Maintenant ?</h3>
+                <p>Le Département Formation de SIGMA est désormais opérationnel. Les inscriptions pour les prochaines sessions sont ouvertes. L'élan est lancé.</p>
+                <p><strong>La prochaine session LaTeX commence samedi 14 mars.</strong></p>
+                <a href="https://form.jotform.com/260594686414062" class="cta-button">Je M'Inscris Maintenant</a>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 18px; font-weight: 500; color: #1a4d2e;">
+                Si vous êtes étudiant, enseignant en herbe, professionnel en quête de nouvelles compétences, ou simplement curieux d'apprendre : la porte est ouverte. SIGMA ne forme pas que des scientifiques. <strong>SIGMA forme des acteurs du changement.</strong>
+            </p>
+        </div>
+        
+        <!-- Footer -->
+        <div class="article-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📧 cricc.ueh@gmail.com</p>
+                    <p>📞 +509 49 22 5259</p>
+                    <p>📍 École Normale Supérieure<br>Canapé-Vert, Port-au-Prince, Haïti</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Suivez-nous</h4>
+                    <div class="social-links">
+                        <a href="https://whatsapp.com/channel/0029VbAOyrp9RZAWk10RQf2b" class="social-icon"><img src="sm_5b321c99945a2.jpg" class="social-icon"></a>
+                        <a href="www.linkedin.com/in/sigma-club-scientifique-et-technologique-7a8a00375" class="social-icon"><img src="sm_5b321c9756fc6.jpg" class="social-icon"></a>
+                        <a href="#" class="social-icon"><img src="logo-instagram_971166-164497.jpg" class="social-icon"></a>
+                        <a href="#" class="social-icon"><img src="logo_facebook.png" class="social-icon"></a>
+                    </div>
+                    <p style="margin-top: 15px;">@ClubSIGMA sur tous les réseaux</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>📚 Prochaines Formations</h4>
+                    <p><strong>14 mars</strong> - LaTeX (Série)</p>
+                    <p><strong>À venir</strong> - Informatique de base</p>
+                </div>
+            </div>
+            
+            <div class="hashtags">
+                <span class="hashtag">#SIGMA</span>
+                <span class="hashtag">#FormationContinue</span>
+                <span class="hashtag">#ÉducationHaïti</span>
+                <span class="hashtag">#Docimologie</span>
+                <span class="hashtag">#InnovationPédagogique</span>
+                <span class="hashtag">#JeunesEngagés</span>
+                <span class="hashtag">#ENS</span>
+                <span class="hashtag">#ChangementParLAction</span>
+            </div>
+            
+            <div class="signature">
+                <p><strong>Rédigé et publié par le Département Communication du Club SIGMA</strong></p>
+                <p>École Normale Supérieure • Mars 2026</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
